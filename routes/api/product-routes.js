@@ -46,7 +46,7 @@ router.get('/:id', (req, res) => {
     ]
   }).then(dbProductData => {
     if (!dbProductData) {
-      res.status(400).json({ message: 'Product not found.' });
+      res.status(404).json({ message: 'Product not found.' });
       return;
     }
     res.json(dbProductData);
@@ -89,7 +89,7 @@ router.post('/', (req, res) => {
       .then((productTagIds) => res.status(200).json(productTagIds))
       .catch((err) => {
         console.log(err);
-        res.status(400).json(err);
+        res.status(404).json(err);
       });
 });
     
@@ -132,12 +132,12 @@ router.put('/:id', (req, res) => {
     .then((updatedProductTags) => res.json(updatedProductTags))
     .catch((err) => {
       // console.log(err);
-      res.status(400).json(err);
+      res.status(404).json(err);
     });
 });
 
-router.delete('/:id', (req, res) => {
-  // delete one product by its `id` value
-};
+// router.delete('/:id', (req, res) => {
+//   // delete one product by its `id` value
+// };
 
 module.exports = router;
